@@ -1,0 +1,49 @@
+<!-- 
+	http get with order by filter	
+	jsbin: http://jsbin.com/jatasaj/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>angular http GET example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+</head>
+  <body ng-app='app'>
+    <ang-snip></ang-snip>
+    
+    <script type='text/ng-template' id='snipTpl'>
+      <ul>
+        <li ng-repeat="x in mc.heroes">{{x.hero}}</li>
+      </ul>
+    </script>
+    
+    <script>
+	    var app = angular.module("app",[]);
+
+		app.component('angSnip', {
+		  templateUrl: 'snipTpl',
+		  controllerAs: 'mc',
+		
+		  controller: function main($scope, $filter, heroesFactory) {
+		    var vm = this;
+		    vm.heroes = [];
+		
+		    var promise = heroesFactory.getData();
+		    promise.then(function(d){
+		      vm.heroes = $filter('orderBy')(d,'hero');
+		    }); 
+		  } // end controller  
+		}); // end component
+		
+		app.factory('heroesFactory', function($http) {
+		  return {
+		    getData: function(id) {
+		      return $http.get('http://output.jsbin.com/nubazo.js').then(function(response) {
+		        return response.data;
+		      });
+		    }
+		  };
+		});
+	</script>
+  </body>
+</html>
