@@ -1,0 +1,100 @@
+<!-- 
+	parent child communication using components
+	jsbin: http://jsbin.com/mekeker
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>angular component communication</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+  </head>
+  <body ng-app="app" >
+    <div ng-controller='standAloneCtrl as sac'>
+      <div>
+        <b>god</b>
+        <p>bar: <input ng-model='sac.bar' /></p>
+      </div>
+
+      <parent bar='sac.bar'>
+        <child-require child-com-bind='parent.name'></child-require>
+        <child-bind name="$parent.pc.name"></child-bind>
+      </parent>
+
+    </div>
+    
+    <script type='text/ng-template' id='parentTpl'>
+      <div>
+        <b>parent</b> - two-way binding to sac
+        <p>(god.bar): <input ng-model='pc.bar'/></p>
+        <p>(this.name): <input ng-model='pc.name' /></p>
+      </div>
+      <ng-transclude></ng-transclude>
+    </script>
+    
+    <script type='text/ng-template' id='childRequireTpl'>
+      <div><b>childRequire</b> - one-way binding to parent
+        <p>(parent:name): <input ng-model='$ctrl.childComBind'></p>
+        <p><b>{{$ctrl.childComBind}}</b></p>
+      </div>
+    </script>
+    
+    <script type='text/ng-template' id='childBindTpl'>
+      <div><b>childBind</b> - two-way binding to parent
+        <p><input ng-model='$ctrl.name' /></p>
+      </div>
+    </script> 
+    
+    <script>
+		var parentObj = {
+			bindings: {
+			bar: '='
+			},
+			transclude	:	true,
+			templateUrl: 'parentTpl',
+			controller	:	parent,
+			controllerAs : 'pc'
+		};
+   
+		var childRequireObj = {
+		  require: {parentComp:'^parent'},
+		  templateUrl	:	'childRequireTpl',
+		  controller	:	childRequire
+		};
+		
+		var childBindObj = { 
+		  bindings: { 
+		    name: '='
+		  },
+		  templateUrl	:	'childBindTpl'
+		};
+		
+		angular
+		  .module('app', [])
+		  .controller('standAloneCtrl', sac)
+		  .component('parent', parentObj)
+		  .component('childRequire', childRequireObj)
+		  .component('childBind', childBindObj);
+		
+		function sac(){
+		    this.bar = 'xyz';
+		}
+		
+		function parent(){
+		  this.name	=	'bobby';
+		  this.foo = {};
+		  this.foo.name = 'suzie';
+		}
+		
+		function childRequire(){
+		  this.$onInit = function() {
+		    this.childComBind = this.parentComp.name;
+		  };
+		}
+    
+	</script>
+	    
+    
+    
+  </body>
+</html>
