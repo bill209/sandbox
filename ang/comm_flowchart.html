@@ -1,0 +1,46 @@
+<!--  
+	component communication with flowchart
+	jsbin: http://jsbin.com/rijiyah/
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>angular component communication</title>
+    <link rel="stylesheet" type="text/css" href="comm_flowchart.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="comm_flowchart.js"></script>
+  </head>
+  <body ng-app="app" >
+
+    <div class='treez' ng-controller='appCtrl'>
+      <parent>          
+        <a href="#">Parent - {{$ctrl.a}}</a><br/>
+        {{$ctrl.msg}}
+        <ul>
+          <child>
+            <p>p: {{$ctrl.a}}</p>
+            <ul>
+              <grand-child msg-to-child='$ctrl.msgToChild(x)'></grand-child>
+            </ul>
+          </child>
+          <child>
+            <ul>
+              <grand-child></grand-child>
+              <grand-child></grand-child>
+            </ul>
+          </child>
+        </ul>
+      </parent>
+
+    </div> 
+    
+    <script type='text/ng-template' id='childTpl'>
+      <a href="#" ng-click="$ctrl.test('test');">Child-{{$ctrl.a}}</a>
+      <ng-transclude></ng-transclude>
+    </script>
+    
+    <script type='text/ng-template' id='grandChildTpl'>
+      <a ng-click="$ctrl.msgToChild('gc');">Grand Child</a> 
+    </script>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+body {
+  font: 10px arial;
+}
+div {
+  clear: both;
+}
+div > p {
+  margin-left: 10px;
+}
+
+* {margin: 0; padding: 0;}
+
+
+.treez parent,
+.treez child,
+.treez ul,
+
+.tree parent,
+.tree child,
+.tree ul {
+	padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.treez parent,
+.treez child,
+.treez grand-child,
+.treez li,
+.tree parent,
+.tree child,
+.tree grand-child,
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.treez parent::before, 
+.treez parent::after,
+.treez child::before, 
+.treez child::after,
+.treez grand-child::before, 
+.treez grand-child::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+
+.treez parent::after,
+.treez child::after,
+.treez grand-child::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+
+.treez parent:only-child::after, 
+.treez parent:only-child::before,
+.treez child:only-child::after, 
+.treez child:only-child::before,
+.treez grand-child:only-child::after, 
+.treez grand-child:only-child::before{
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.treez parent:only-child,
+.treez child:only-child,
+.treez grand-child:only-child,
+.treez li{ 
+  padding-top: 0;
+}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+
+.treez parent:first-child::before, 
+.treez parent:last-child::after,
+.treez child:first-child::before, 
+.treez child:last-child::after,
+.treez grand-child:first-child::before, 
+.treez grand-child:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.treez parent:last-child::before,
+.treez child:last-child::before,
+.treez child:last-child::before,
+.treez grand-child:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.treez parent:first-child::after,
+.tree parent:first-child::after,
+.treez child:first-child::after,
+.treez grand-child:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.treez parent ul::before,
+.tree parent ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+
+.treez parent a,
+.treez child a,
+.treez grand-child a{
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 8px;
+	display: inline-block;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+
+.treez parent a:hover, 
+.treez parent a:hover ~ul child a,
+.treez child a:hover ~ul  a {
+	background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.treez parent a:hover ~ul child::after, 
+.treez parent a:hover ~ul child::before, 
+.treez parent a:hover ~ul child ul grand-child::after, 
+.treez parent a:hover ~ul child ul grand-child::before, 
+.treez parent a:hover ~ul::before, 
+.treez parent a:hover ~ul ul::before,
+.treez child a:hover ~ul grand-child::before,
+.treez child a:hover ~ul grand-child::after{
+	border-color:  #94a0b4;
+}
+
+
