@@ -1,0 +1,49 @@
+<!--  
+	scope with controllerAs
+	jsbin: http://jsbin.com/hatufab
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>angular scope example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+</head>
+  <body ng-app="app" >
+    <div ng-controller="mainCtrl as mc">
+
+      MC<br/>main: {{mc.name}}<br/><br/>
+      <div ng-controller="detailCtrl as dc" style="margin-left: 10px">
+        DC<br/>
+        detailName: {{dc.detailName}}<br/>
+        changeName: {{dc.changeName}}<br/>
+        inputName: {{dc.inputName}}<br/>
+        inputName: <input ng-model="dc.inputName"><br/><br/>
+
+        mc.name: {{mc.name}}<br/>
+        mc.name: <input ng-model="mc.name">
+      </div>
+    </div>
+    
+    <script>
+		var app = angular.module("app",[]);
+		app.controller("mainCtrl", main);
+		
+		function main($scope) {
+		  var vm = this;
+		  vm.name = 'bob';    
+		}
+		
+		app.controller("detailCtrl", detail);
+		
+		function detail($scope){
+		  var vm = this;
+		  vm.detailName = $scope.mc.name;
+		  vm.changeName = $scope.mc.name;
+		  vm.changeName = 'ralph';  // does not change parent var
+		  vm.inputName = $scope.mc.name;		  
+		}
+
+	</script>
+
+  </body>
+</html>

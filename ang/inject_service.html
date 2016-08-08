@@ -1,0 +1,41 @@
+<!--  
+	injecting a service
+	jsbin: http://jsbin.com/cupuye/edit?html,js,output
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>angular http GET example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+</head>
+  <body>
+
+    <div ng-app="app" ng-controller="mainCtrl as mc">
+      <div ng-controller="bobCtrl as bob">
+        <p>bob result: {{bob.result}}</p>
+      </div>      
+    
+    </div>
+    
+    <script>
+		var app = angular.module("app",[]);
+		app.controller("mainCtrl", main);
+		
+		function main($scope) {
+		  var vm = this;    
+		}
+		
+		app.controller("bobCtrl", bob);
+		function bob($scope, greeting) {
+		  var vm = this;
+		  vm.result = greeting.result;
+		}
+		
+		app.service('greeting',function(){
+		  this.result='hello';
+		});	    
+	</script>
+
+  </body>
+</html>
