@@ -1,0 +1,58 @@
+<!--  
+	sibling communication using rootscope
+	jsbin: http://jsbin.com/buzipo/
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>angular sibling broadcast using rootscope</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+</head>
+  <body ng-app="app" >
+    <div ng-controller="dadCtrl as dc">
+      <div ng-controller="brotherCtrl as bc">
+        <p> brother says: 
+          <input type="text" ng-model="bc.text">
+        </p>
+        <button ng-click="bc.sendText()">send message</button>
+      </div>
+
+      <div ng-controller="sisterCtrl as sc">
+        <p>sister hears: {{sc.text}}</p>
+      </div>
+
+    </div>
+
+  </body>
+  
+  <script>
+	var app = angular.module("app",[]);
+	app.controller("dadCtrl", dad);
+	app.controller("brotherCtrl", brother);
+	app.controller("sisterCtrl", sister);
+	
+	function dad($scope) {
+	}
+	
+	function brother($scope, $rootScope){
+	  var vm = this;
+	  vm.text = 'hi';
+	  vm.sendText = sendText;
+	  
+	  function sendText(){
+	    $rootScope.$broadcast("msg", vm.text);
+	  }
+	  
+	}
+	
+	function sister($scope, $rootScope){
+	  var vm = this;
+	  vm.text = 'waiting...';
+	  
+	  $scope.$on('msg', function (event, data) {
+	    vm.text = data;
+	  });
+	}
+  </script>
+</html>
