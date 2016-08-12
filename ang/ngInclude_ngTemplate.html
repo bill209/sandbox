@@ -1,0 +1,32 @@
+<!--  
+	using ng-include with ng-template
+	jsbin: http://jsbin.com/gibomus/edit
+-->
+
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+  </head>
+  <body>
+    <div ng-controller='MainCtrl as mc'>
+      <ng-include src="'tpl.html'" onload="dad = mc.name; son = mc.name"></ng-include>
+    </div>
+
+    <script type="text/ng-template" id="tpl.html">
+      {{dad}} meet {{son}}
+    </script>
+
+  </body>
+  
+  <script>
+	var app = angular.module('app', []);
+	app.controller('MainCtrl', mc);
+	
+	function mc($scope){
+	  var vm = this;
+	  vm.name = 'bob';
+	  
+	}
+  </script>	  
+</html>
