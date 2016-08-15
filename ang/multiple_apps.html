@@ -1,0 +1,64 @@
+<!--  
+	running communication between multiple ang apps
+	jsbin: http://jsbin.com/mokogew/edit
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>angular http GET example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+</head>
+  <body ng-app="appMain">
+
+  <div ng-controller="AppCtrl as ac">
+  <label>
+    <input type="radio" 
+           name="radio"
+           ng-model="character.type" 
+           ng-change="ac.getName(character.type)"
+           value="hero">
+    Hero
+  </label><br/>
+  <label>
+    <input type="radio"
+           name="radio"
+           ng-model="character.type" 
+           ng-change="ac.getName(character.type)"
+           value="villain">
+    Villain
+  </label><br/>
+    <p>Hello {{ac.name}}!</p>
+  </div>
+  
+  <script>
+	var appMain = angular.module('appMain', ['appSub']);
+	
+	appMain.controller('AppCtrl', ac);
+	
+	function ac(subSvc) {
+	  var vm=this;
+	  vm.character = {};
+	  vm.getName = getName;
+	  
+	  function getName(val){
+	    vm.name = subSvc.getName(val);    
+	  }
+	}
+	
+	var appSub = angular.module('appSub', []);
+	
+	appSub.service('subSvc', function(){
+	  this.getName = function(type){
+	    if(type === 'hero'){
+	      return 'buffy';
+	    } else {
+	      return 'spike';      
+	    }
+	  }
+	});  
+	  
+  </script>
+
+  </body>
+</html>
