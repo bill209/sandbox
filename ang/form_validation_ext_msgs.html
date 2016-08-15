@@ -1,0 +1,50 @@
+<!--  
+	form validation with external error message file
+	jsbin: http://jsbin.com/mowadu/edit
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>angular http GET example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
+  </head>
+  <body ng-app='app' ng-controller='MainCtrl as mc'>
+    <form name="myForm" novalidate>
+      <label>
+        Enter your name:
+        <input type="text"
+               name="myName"
+               ng-model="mc.name"
+               ng-minlength="5"
+               ng-maxlength="20"
+               required 
+               ng-focus="mc.submitted = false"
+               />
+      </label>
+
+      <br/><br/>
+
+      <button type='submit' ng-click="mc.submitted=true;">go</button>
+    </form>
+
+    <div ng-messages="myForm.myName.$error" ng-if="mc.submitted">
+      <div ng-messages-include="http://output.jsbin.com/kaxevoz"></div>
+    </div>
+    
+    <script>
+		var app = angular.module("app",['ngMessages']);
+		app.controller("MainCtrl", main);
+		
+		function main($scope) {
+		  var vm = this;
+		  vm.submitted = false;
+		  vm.name = '';
+		  vm.email = '';
+		  vm.URL = '';
+		}  
+	</script>
+
+  </body>
+</html>
