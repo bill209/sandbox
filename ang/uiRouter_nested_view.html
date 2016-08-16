@@ -1,0 +1,90 @@
+<!--  
+	ui-router with nested view
+	jsbin: http://jsbin.com/veviho/edit
+-->
+
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  </head>
+  <body>
+    <div>
+      <a ui-sref="stateOne">one</a> : 
+      <a ui-sref="stateTwo">two</a>
+    </div>
+    <hr/>
+    <ui-view></ui-view>
+    
+    <script type="text/ng-template" id="tpl1.html">
+      <div ng-click="ctrl1.go();">ctrl one</div>
+      <a ui-sref=".list" class="btn btn-primary">List</a>
+      <a ui-sref=".paragraph" class="btn btn-danger">Paragraph</a>
+      <hr />
+      <div ui-view></div>
+    </script>
+    <script type="text/ng-template" id="tpl2.html">
+      <div ng-click="ctrl2.go();">ctrl two</div>
+    </script>
+
+    <script type="text/ng-template" id="tpl1a.html">
+      <ul>
+          <li ng-repeat="dog in dogs">{{ dog }}</li>
+      </ul>
+    </script>
+    
+    <script>
+		var app = angular.module('app', ['ui.router']);
+		app.controller('Ctrl1', ctrl1);
+		app.controller('Ctrl2', ctrl2);
+		
+		function ctrl1($scope, $location){
+		  var vm = this;
+		  vm.go = go;
+		  function go(){
+		    $location.url('/ctrltwo')
+		  }
+		}
+		
+		function ctrl2($scope, $location){
+		  var vm = this;
+		  vm.go = go;
+		  function go(){
+		    $location.url('/xxx')
+		  }
+		}
+		
+		app.config(function($stateProvider, $urlRouterProvider) {
+		  
+		  $urlRouterProvider.otherwise('/ctrlone');
+		  
+		  $stateProvider
+		    .state('stateOne', {
+		      url: '/ctrlone',
+		      controller: 'Ctrl1 as ctrl1',
+		      templateUrl: 'tpl1.html'
+		    })
+		    .state('stateOne.list', {
+		        url: '/list',
+		        templateUrl: 'tpl1a.html',
+		        controller: function($scope) {
+		            $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
+		        }
+		    })
+		
+		    // nested list with just some random string data
+		    .state('stateOne.paragraph', {
+		        url: '/paragraph',
+		        template: 'I could sure use a drink right now.'
+		    })
+		    .state('stateTwo', {
+		      url: '/ctrltwo',
+		      controller: 'Ctrl2 as ctrl2',
+		      templateUrl: 'tpl2.html'
+		    })
+		
+		  });
+	</script>
+  </body>
+</html>
