@@ -1,0 +1,67 @@
+<!--  
+	using ng-route
+	jsbin: http://jsbin.com/faqanug/edit
+-->
+
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <!-- removes the hashbang from routes! -->
+    <base href="/">
+  </head>
+  <body>
+    <div>
+      <a href="/ctrlone">one</a> : 
+      <a href="/ctrltwo">two</a>
+    </div>
+    <hr/>
+    <ng-view></ng-view>
+    
+    <script type="text/ng-template" id="tpl1.html">
+      <div ng-click="ctrl1.go();">ctrl one</div>
+    </script>
+    <script type="text/ng-template" id="tpl2.html">
+      <div ng-click="ctrl2.go();">ctrl two</div>
+    </script>
+    
+    <script>
+		var app = angular.module('app', ['ngRoute']);
+		app.controller('Ctrl1', ctrl1);
+		app.controller('Ctrl2', ctrl2);
+		
+		function ctrl1($scope, $location){
+		  var vm = this;
+		  vm.go = go;
+		  function go(){
+		    $location.url('/ctrltwo')
+		  }
+		}
+		
+		function ctrl2($scope, $location){
+		  var vm = this;
+		  vm.go = go;
+		  function go(){
+		    $location.url('/ctrlone')
+		  }
+		}
+		
+		app.config(function($routeProvider, $locationProvider) {
+		  $routeProvider
+		    .when('/ctrlone', {
+		    templateUrl: 'tpl1.html',
+		    controller  : 'Ctrl1 as ctrl1'
+		  })
+		    .when('/ctrltwo', {
+		    templateUrl: 'tpl2.html',
+		    controller:  'Ctrl2 as ctrl2'
+		  })
+		    .otherwise({ redirectTo: '/ctrlone' });
+		    // use the HTML5 History API
+		    // removes hashbang #  (along with base in <head>)
+		    $locationProvider.html5Mode(true);
+		});	
+	</script>
+  </body>
+</html>
