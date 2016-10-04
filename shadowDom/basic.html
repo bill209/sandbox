@@ -1,0 +1,37 @@
+<!--
+shadow dom example: it merely moves the shadow root into the shadow
+dom. the css color attribute demonstrates that the Shadow DOM is
+not affected by the dom's styling.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>shadow dom - basic</title>
+    <style>
+        p { color: red; }
+    </style>
+</head>
+
+<body>
+<p>hi bob</p>
+
+<div class='theShadowKnows'>
+    <p class='msg'>hi joe</p>
+    <p class='msg'>how are you doing?</p>
+</div>
+
+<template>
+    <style>::content .msg { color: blue; }</style>
+    <content select='.msg'></content>
+</template>
+
+<script>
+    var tpl = document.querySelector('template');
+    var host = document.querySelector('.theShadowKnows');
+    var root = host.createShadowRoot();
+    root.appendChild(document.importNode(tpl.content, true));
+</script>
+</body>
+</html>
