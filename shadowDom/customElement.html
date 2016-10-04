@@ -1,0 +1,48 @@
+<!--
+shadow dom example
+
+this demonstrates how to create a custom element
+jsbin: http://jsbin.com/vubida/edit?html,js,output
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>shadow dom - custom element</title>
+    <style>p {
+        color: red;
+    }</style>
+</head>
+
+<body>
+    <p>hi bob</p>
+
+    <the-shadow-knows>
+        <p class='msg'>hi joe</p>
+        <p class='msg'>how are you doing?</p>
+    </the-shadow-knows>
+
+    <template>
+        <style>::content .msg { color: blue; }</style>
+        <content select='.msg'></content>
+    </template>
+
+    <script>
+        var tpl = document.querySelector('template');
+        var msgProto = Object.create(HTMLElement.prototype);
+
+        // create shadowDom and clone the template
+        msgProto.createdCallback = function() {
+            var root = this.createShadowRoot();
+            root.appendChild(document.importNode(tpl.content, true));
+        };
+
+        // register our new element
+        var theShadowKnows = document.registerElement('the-shadow-knows', {
+            prototype: msgProto
+        });
+    </script>
+</body>
+</html>
