@@ -1,0 +1,52 @@
+<!--  
+	form validation
+	jsbin: http://jsbin.com/ruzohoh/edit
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>angular http GET example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
+  <style>span { margin-top:10px;color: #d88; font: 10px arial;}
+</head>
+  <body ng-app='app' ng-controller='MainCtrl as mc'>
+	<form name="userForm">
+	  <div class="field">
+	    <label for="emailAddress">
+	      Enter your email address:
+	    </label>
+	
+	    <input type="email"
+	           name="emailAddress"
+	           ng-model="data.email"
+	           ng-minlength="5"
+	           ng-maxlength="30"
+	           required />
+	
+	</form>
+	
+	<div ng-messages="userForm.emailAddress.$error"
+	     ng-messages-multiple>
+	  <span ng-message="required">...required</span>
+	  <span ng-message="minlength">...minlength</span>
+	  <span ng-message="maxlength">...maxlength</span>
+	  <span ng-message="email">...email</span>
+	</div>
+	
+	<script>
+		var app = angular.module("app",['ngMessages']);
+		app.controller("MainCtrl", main);
+		
+		function main($scope) {
+		  var vm = this;
+		  vm.submitted = false;
+		  vm.name = '';
+		  vm.email = '';
+		  vm.URL = '';
+		}	
+	</script>
+
+  </body>
+</html>
