@@ -1,5 +1,5 @@
 *.DS_Store
 
-mode_modules
+mode_modules/
 /polymer/bower_components/*
 *.json
