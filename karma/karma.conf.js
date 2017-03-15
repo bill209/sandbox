@@ -21,13 +21,26 @@ module.exports = function(config) {
 			'app/js/main.js',
       'app/js/controllers/about.js',
       'app/js/controllers/main.js',
-      'app/js/components/main.js',
       'app/js/factories/main.js',
-      'app/js/controllers/test.spec.js',
-      'app/js/controllers/about.spec.js',
+      // 'app/js/controllers/test.spec.js',
+      // 'app/js/controllers/about.spec.js',
       'app/js/controllers/main.spec.js',
+      'app/js/factories/main.spec.js',
+      'app/js/components/main.js',
       'app/js/components/main.spec.js',
-      'app/js/factories/main.spec.js'
+      'app/js/components/bob_1.js',
+      'app/js/components/bob_1.spec.js',
+      'app/js/components/bob_2.js',
+      'app/js/components/bob_2.spec.js',
+      'app/js/components/bob_3.js',
+      'app/js/components/bob_3.spec.js',
+      'app/js/components/bob_4.js',
+      'app/js/components/bob_4.spec.js',
+			'app/js/components/bob_5.js',
+			'app/js/components/bob_5.spec.js',
+			'app/js/components/bob_6.js',
+			'app/js/components/bob_6.spec.js',
+			'app/js/components/*.tpl.html'
     ],
 
 
@@ -38,14 +51,22 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
+
+		preprocessors: {
+			"app/js/components/*.tpl.html": ["ng-html2js"]
+		},
+
+		ngHtml2JsPreprocessor: {
+			// the name of the Angular module to create
+			stripPrefix: 'app/',
+			moduleName: "my.templates"
+		},
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port
@@ -77,5 +98,7 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
+
+
   })
 }

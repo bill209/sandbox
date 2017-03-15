@@ -10,8 +10,6 @@ app.factory('MainFactory', function($http){
 		},
 		getFavoriteScotch: function(id){
 			return $http.get('http://localhost:8081/getScotch/' + id).then(function(response) {
-				console.log("response",response);
-				
 				return response.data;
 			});
 		},

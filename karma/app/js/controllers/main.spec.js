@@ -48,6 +48,4 @@ describe('Main controller', function() {
 		});
 	})
 
-
-
 });

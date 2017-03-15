@@ -4,7 +4,6 @@ var mainController = function($scope, MainFactory){
 	var promise = MainFactory.getFavoriteScotch(2);
 	promise.then(function (d) {
 		vm.favScotch = d;
-		console.log("getFavoriteScotch",JSON.stringify(vm.favScotch));
 	});
 
 }
