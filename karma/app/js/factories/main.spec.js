@@ -1,20 +1,8 @@
 describe('Main factory', function() {
 	var MainFactory;
-
 	var greeting = 'hi bob';
-
-	var allScotches2 = [
-		{ "name": "lagavulin" },
-		{ "name": "laphroaig" },
-		{ "name": "oban" },
-		{ "name": "macallan" },
-		{ "name": "talisker" },
-		{ "name": "glenmorangie" }
-	];
-	 
 	var allScotches = [{name:'lagavulin'},{name:'laphroaig'},{name:'oban'},{name:'macallan'},{name:'talisker'},{name:'glenmorangie'}];
 
-	// Before each test load our api.users module
 	beforeEach(angular.mock.module('tinyApp'));
 
 	// Before each test set our injected Users factory (_Users_) to our local Users variable

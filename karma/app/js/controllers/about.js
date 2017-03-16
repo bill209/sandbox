@@ -1,6 +1,6 @@
 app.controller('AboutCtrl', aboutCtrl);
 
-function aboutCtrl(MainFactory){
+function aboutCtrl($scope, MainFactory){
 	var vm = this;
 	vm.greeting = MainFactory.getGreeting();
 };

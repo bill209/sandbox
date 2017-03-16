@@ -40,6 +40,11 @@ module.exports = function(config) {
 			'app/js/components/bob_5.spec.js',
 			'app/js/components/bob_6.js',
 			'app/js/components/bob_6.spec.js',
+			'app/js/factories/bob_1.js',
+			'app/js/factories/bob_1.spec.js',
+			'app/js/factories/bob_2.js',
+			'app/js/factories/bob_2.spec.js',
+
 			'app/js/components/*.tpl.html'
     ],
 

@@ -36,7 +36,6 @@ describe('Component: bob_6', function () {
 		var result;
 
 		beforeEach(inject(function( _MainFactory_, _$q_, _$httpBackend_){
-
 			MF = _MainFactory_;
 			$q = _$q_;
 			$httpBackend = _$httpBackend_;
