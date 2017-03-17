@@ -44,6 +44,7 @@ module.exports = function(config) {
 			'app/js/tests/factories/main.spec.js',
 			'app/js/tests/factories/bob_1.spec.js',
 			'app/js/tests/factories/bob_2.spec.js',
+			'app/js/tests/factories/bob_3.spec.js',
 
 			// templates
 			'app/js/**/*.tpl.html'
