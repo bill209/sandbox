@@ -9,9 +9,17 @@ var express = require('express'),
 
 app.use(cors());
 
+app.get('/getFtoC/:f', function (req, res) {
+	console.log('zzz ', req.params.f);
+	var response = (req.params.f - 32) * 5 / 9;
+console.log("response",response);
+
+	res.end( response.toString() );
+	// res.end( '33' );
+})
+
 app.get('/getScotches', function (req, res) {
 	fs.readFile( __dirname + "/app/data/scotches.json", 'utf8', function (err, data) {
-		console.log("getScotches: ",data);
 		res.end( data );
 	});
 })
@@ -21,7 +29,6 @@ app.get('/getScotch/:id', function (req, res) {
 	fs.readFile( __dirname + "/app/data/scotches.json", 'utf8', function (err, data) {
 		scotches = JSON.parse( data );
 		var scotch = scotches[req.params.id]
-		console.log( 'fav scotch: ', scotch );
 		res.end( JSON.stringify(scotch));
 	});
 })

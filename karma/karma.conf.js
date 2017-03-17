@@ -15,37 +15,38 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './node_modules/angular/angular.js',                              // angular
-      './node_modules/angular-ui-router/release/angular-ui-router.js',  // ui-router
-      './node_modules/angular-mocks/angular-mocks.js',                  // loads our modules for tests
+      './node_modules/angular/angular.js',
+      './node_modules/angular-ui-router/release/angular-ui-router.js',
+      './node_modules/angular-mocks/angular-mocks.js',
 			'app/js/main.js',
       'app/js/controllers/about.js',
       'app/js/controllers/main.js',
-      'app/js/factories/main.js',
-      // 'app/js/controllers/test.spec.js',
-      // 'app/js/controllers/about.spec.js',
-      'app/js/controllers/main.spec.js',
-      'app/js/factories/main.spec.js',
-      'app/js/components/main.js',
-      'app/js/components/main.spec.js',
-      'app/js/components/bob_1.js',
-      'app/js/components/bob_1.spec.js',
-      'app/js/components/bob_2.js',
-      'app/js/components/bob_2.spec.js',
-      'app/js/components/bob_3.js',
-      'app/js/components/bob_3.spec.js',
-      'app/js/components/bob_4.js',
-      'app/js/components/bob_4.spec.js',
+      'app/js/factories/mainFactory.js',
+			'app/js/components/main.js',
+			'app/js/components/bob_1.js',
+			'app/js/components/bob_2.js',
+			'app/js/components/bob_3.js',
+			'app/js/components/bob_4.js',
 			'app/js/components/bob_5.js',
-			'app/js/components/bob_5.spec.js',
 			'app/js/components/bob_6.js',
-			'app/js/components/bob_6.spec.js',
-			'app/js/factories/bob_1.js',
-			'app/js/factories/bob_1.spec.js',
-			'app/js/factories/bob_2.js',
-			'app/js/factories/bob_2.spec.js',
 
-			'app/js/components/*.tpl.html'
+			// test files
+      // 'app/js/tests/controllers/test.spec.js',
+      // 'app/js/tests/controllers/about.spec.js',
+      'app/js/tests/controllers/main.spec.js',
+      'app/js/tests/components/main.spec.js',
+      'app/js/tests/components/bob_1.spec.js',
+      'app/js/tests/components/bob_2.spec.js',
+      'app/js/tests/components/bob_3.spec.js',
+      'app/js/tests/components/bob_4.spec.js',
+			'app/js/tests/components/bob_5.spec.js',
+			'app/js/tests/components/bob_6.spec.js',
+			'app/js/tests/factories/main.spec.js',
+			'app/js/tests/factories/bob_1.spec.js',
+			'app/js/tests/factories/bob_2.spec.js',
+
+			// templates
+			'app/js/**/*.tpl.html'
     ],
 
 
@@ -58,7 +59,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
 		preprocessors: {
-			"app/js/components/*.tpl.html": ["ng-html2js"]
+			"app/js/**/*.tpl.html": ["ng-html2js"]
 		},
 
 		ngHtml2JsPreprocessor: {
