@@ -1,6 +1,6 @@
 *.DS_Store
 
-mode_modules
+node_modules
 karma/node_modules
 /polymer/bower_components/*
 jasmine-standalone-2.5.2
