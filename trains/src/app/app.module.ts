@@ -9,12 +9,15 @@ import { AppComponent } from './app.component';
 import { TrainService } from './train.service';
 import { TrainListComponent } from './train-list/train-list.component';
 import { TrainItemComponent } from './train-list/train-item.component';
+import { TrainDetailComponent } from './train-detail/train-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrainListComponent,
-    TrainItemComponent
+    TrainItemComponent,
+    TrainDetailComponent,
+    TrainDetailComponent
   ],
   imports: [
     BrowserModule,

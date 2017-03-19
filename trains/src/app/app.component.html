@@ -1,8 +1,11 @@
 <div id="content">
 
     <div>
-        <app-train-list></app-train-list>
+        <app-train-list (trainSelected)="selectedTrain = $event"></app-train-list>
     </div>
-    <div>hi</div>
+
+    <div>
+        <app-train-detail [selectedTrain]="selectedTrain"></app-train-detail>
+    </div>
 
 </div>

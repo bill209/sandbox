@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {TrainListComponent} from "./train-list/train-list.component";
+import {Train} from "./train";
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,6 @@ import {TrainListComponent} from "./train-list/train-list.component";
   styles: []
 })
 export class AppComponent {
-  title = 'app works!';
+  selectedTrain: Train;
+
 }
