@@ -2,7 +2,7 @@
 
 describe('bob2 factory', function(){
 	var allScotches = [{name:'lagavulin'},{name:'laphroaig'},{name:'oban'},{name:'macallan'},{name:'talisker'},{name:'glenmorangie'}];
-	var scotches, favScotch, MF, $q, $http, $httpBackend, scope;
+	var scotches, favScotch, MF, $httpBackend, scope;
 
 	beforeEach(angular.mock.module('tinyApp'));
 

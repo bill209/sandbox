@@ -1,4 +1,4 @@
-// test for inline template to be rendered
+// test for scoped variable, scoped function and external template to be rendered
 
 describe('Component: bob_5', function () {
 	beforeEach(module('tinyApp'));

@@ -18,7 +18,6 @@ describe('Main controller', function() {
 		expect(MF).toBeDefined();
 	});
 
-
 	describe('getScotches()', function() {
 		var result;
 

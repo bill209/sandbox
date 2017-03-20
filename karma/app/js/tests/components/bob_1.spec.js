@@ -15,7 +15,7 @@ describe('Component: bob_1', function () {
 
 	it('inline template should render properly', function() {
 		var h3 = element.find('h3');
-
+		// two ways to check for the correct content
 		expect(h3.text()).toBe('hi bob from boogertown');
 		expect(h3.text()).toContain("boogertown");
 	});

@@ -20,7 +20,17 @@ app.factory('MainFactory', function($http){
 			return $http.get('http://localhost:8081/getFtoC/' + fahr).then(function(response) {
 				return Math.round(response.data);
 			});
-
+		},
+		showDialog: function(message, title){
+			if(title){
+				modalSvc.showModalDialog({
+					title: title,
+					message: message
+				});
+			} else {
+				$window.alert(message);
+			}
 		}
 	}
 });
+

@@ -1,4 +1,4 @@
-// test for inline template to be rendered
+// test for scoped var, scoped function, external template to be rendered, and http factory call
 
 describe('Component: bob_6', function () {
 

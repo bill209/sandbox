@@ -1,4 +1,4 @@
-// test for inline template to be rendered
+// test for external template to be rendered
 
 describe('Component: bob_4', function () {
 	beforeEach(module('tinyApp'));
@@ -14,7 +14,7 @@ describe('Component: bob_4', function () {
 	}));
 
 	it('templateUrl is created correctly', function () {
-		// Compile a piece of HTML containing the directive
+		// Compile a piece of HTML containing the component
 		var element = $compile('<bob4 town="deltaville"></bob4>')(scope);
 		scope.$digest();
 		// Check that the compiled element contains the templated content

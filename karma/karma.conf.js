@@ -29,6 +29,7 @@ module.exports = function(config) {
 			'app/js/components/bob_4.js',
 			'app/js/components/bob_5.js',
 			'app/js/components/bob_6.js',
+			'app/js/services/bob_1.js',
 
 			// test files
       // 'app/js/tests/controllers/test.spec.js',
@@ -45,6 +46,8 @@ module.exports = function(config) {
 			'app/js/tests/factories/bob_1.spec.js',
 			'app/js/tests/factories/bob_2.spec.js',
 			'app/js/tests/factories/bob_3.spec.js',
+			// 'app/js/tests/factories/bob_4.spec.js',
+			// 'app/js/tests/services/bob_1.spec.js',
 
 			// templates
 			'app/js/**/*.tpl.html'

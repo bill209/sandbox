@@ -1,7 +1,7 @@
 // example of testing multiple http calls with one whenGet
 
 describe('bob1 factory', function(){
-	var scotches, favScotch, MF, $q, $http, $httpBackend, scope;
+	var scotches, favScotch, MF, $httpBackend, scope;
 
 	beforeEach(angular.mock.module('tinyApp'));
 
