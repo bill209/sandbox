@@ -43,3 +43,16 @@ app-train-detail img {
     max-height:100%;
     max-width:100%;
 }
+
+app-train-item md-list-item {
+    cursor: pointer;
+    border: solid 1px #ddd;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px; /* future proofing */
+    -khtml-border-radius: 4px;
+}
+
+app-train-item md-list-item:hover {
+    background-color: #f0f0f0;
+}
