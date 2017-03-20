@@ -1,0 +1,15 @@
+<app-train-header></app-train-header>
+
+<div id="content">
+
+    <div>
+        <div>
+            <app-train-list (trainSelected)="selectedTrain = $event"></app-train-list>
+        </div>
+    </div>
+
+    <div>
+        <app-train-detail [selectedTrain]="selectedTrain"></app-train-detail>
+    </div>
+
+</div>
