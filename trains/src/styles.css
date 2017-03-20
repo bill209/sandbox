@@ -56,3 +56,8 @@ app-train-item md-list-item {
 app-train-item md-list-item:hover {
     background-color: #f0f0f0;
 }
+
+app-train-item md-list-item p span {
+    font-size: 10px;
+    color: #888;
+}
