@@ -10,6 +10,7 @@ import { TrainService } from './train.service';
 import { TrainListComponent } from './train-list/train-list.component';
 import { TrainItemComponent } from './train-list/train-item.component';
 import { TrainDetailComponent } from './train-detail/train-detail.component';
+import { TrainHeaderComponent } from './train-header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TrainDetailComponent } from './train-detail/train-detail.component';
     TrainListComponent,
     TrainItemComponent,
     TrainDetailComponent,
-    TrainDetailComponent
+    TrainDetailComponent,
+    TrainHeaderComponent
   ],
   imports: [
     BrowserModule,
