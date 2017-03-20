@@ -14,7 +14,8 @@ export class TrainService {
 		new Train('Kansas City Southern Railway', 'KCS', 'kansasCitySouthern.jpg', 'operational', '1887', 'present'),
 		new Train('Norfolk Southern Railway', 'NS', 'norfolkSouthern.jpg', 'operational', '1982', 'present'),
 		new Train('Atchison, Topeka and Santa Fe Railway', 'ATSF', 'santaFe.jpg', 'merged into BNSF', '1859', '1996' ),
-		new Train('Union Pacific Railroad', 'UP', 'unionPacific.jpg', 'operational', '1862', 'present')
+		new Train('Union Pacific Railroad', 'UP', 'unionPacific.jpg', 'operational', '1862', 'present'),
+		new Train('North Western Railway', 'NW', 'thomasTheTankEngine.jpg', 'operational', '1946', 'present')
 	]
 
   constructor() { }
