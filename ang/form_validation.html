@@ -9,7 +9,7 @@
   <title>angular http GET example</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
-  <style>span { margin-top:10px;color: #d88; font: 10px arial;}
+  <style>span { margin-top:10px;color: #d88; font: 10px arial;}</style>
 </head>
   <body ng-app='app' ng-controller='MainCtrl as mc'>
 	<form name="userForm">
@@ -24,8 +24,8 @@
 	           ng-minlength="5"
 	           ng-maxlength="30"
 	           required />
-	
-	</form>
+	  </div>
+  </form>
 	
 	<div ng-messages="userForm.emailAddress.$error"
 	     ng-messages-multiple>
