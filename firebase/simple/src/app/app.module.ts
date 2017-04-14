@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { ObservableComponent } from './observable.component';
+import { ListComponent } from './list.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -19,7 +20,7 @@ export const firebaseConfig = {
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  declarations: [ AppComponent, ObservableComponent ],
+  declarations: [ AppComponent, ObservableComponent, ListComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}
