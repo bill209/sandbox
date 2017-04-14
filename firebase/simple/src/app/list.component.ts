@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { ProviderService } from "./provider.service";
 
 
 @Component({
@@ -16,11 +16,15 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   styles: []
 })
 
-export class ListComponent {
-  items: FirebaseListObservable<any[]>;
+export class ListComponent implements OnInit{
+	items: any;
 
-  constructor(af: AngularFire) {
-    this.items = af.database.list('/thoughts');
-  }
+  constructor(
+  	public providerService: ProviderService
+	) {}
+
+  ngOnInit(){
+		this.items = this.providerService.getThoughts();
+	}
 
 }

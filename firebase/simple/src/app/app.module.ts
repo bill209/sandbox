@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { ObservableComponent } from './observable.component';
 import { ListComponent } from './list.component';
+import {ProviderService} from "./provider.service";
 
 // Must export the config
 export const firebaseConfig = {
@@ -21,6 +22,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   declarations: [ AppComponent, ObservableComponent, ListComponent ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+	providers: [ ProviderService ]
 })
 export class AppModule {}
