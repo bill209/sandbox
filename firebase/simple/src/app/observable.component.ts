@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
+import { Component, OnInit } from '@angular/core';
+import { ProviderService } from "./provider.service";
 
 @Component({
   selector: 'app-observable',
@@ -7,6 +7,7 @@ import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 	<p>FirebaseObjectObservable</p>
   <p>{{ (railroads | async | json) }}</p>
   
+  <p>array of keys</p>
 	<ul>
 		<li *ngFor='let key of arrayOfKeys'>
 				<h3>{{key}}:::{{(railroads | async)}}</h3>
@@ -16,13 +17,17 @@ import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 
   `,
 })
-export class ObservableComponent {
-  railroads: FirebaseObjectObservable<any>;
+export class ObservableComponent implements OnInit {
+  railroads: any;
 	public arrayOfKeys;
 
-  constructor(af: AngularFire) {
-    this.railroads = af.database.object('/trains');
-		console.log(this.railroads);
+  constructor(public providerService: ProviderService) {}
+
+  ngOnInit(){
+		this.railroads = this.providerService.getTrainsObs();
+		console.log('this.railroads', this.railroads);
 		this.arrayOfKeys = Object.keys(this.railroads);
-  }
+		console.log("this.arrayOfKeys", this.arrayOfKeys);
+
+	}
 }
