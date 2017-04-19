@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 				<md-radio-group [(ngModel)]="dataChoice">
 		
 					<md-radio-button [value]="1" class="md-primary">local</md-radio-button>
-					<md-radio-button [value]="2">firebases</md-radio-button>
+					<md-radio-button [value]="2">firebase</md-radio-button>
 		
 				</md-radio-group>
 		</div>
