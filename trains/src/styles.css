@@ -12,6 +12,19 @@ app-train-list md-list.mat-list {
 	padding-top: 0;
 }
 
+app-data-choice {
+	float: right;
+}
+
+app-data-choice  {
+    width: 100px;
+    margin-top: -10px;
+}
+
+app-data-choice .mat-radio-container {
+    top: 5px;
+}
+
 #content {
 	padding: 20px;
 	width: 100%;
@@ -65,7 +78,7 @@ app-train-header {
 	display: block;
 	margin: 0;
 	padding: 20px;
-	width: 100%;
+	width: auto;
 	height: 35px;
 	background-color: #aaa;
 	color: #333;
