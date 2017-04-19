@@ -6,25 +6,33 @@ import { ProviderService } from "./provider.service";
   selector: 'app-list',
   template: `
     <p>FirebaseListObservable</p>
-    <p>{{ (items | async |json) }}</p>
+    <p>thoughts</p>
     <ul>
-      <li class="text" *ngFor="let item of items | async">
-        {{item.pondering}}
+      <li class="text" *ngFor="let thought of thoughts | async">
+        {{thought.pondering}}
       </li>
     </ul>
-  `,
+    <p>trains</p>
+    <ul>
+      <li class="text" *ngFor="let rr of railroads | async">
+        {{rr.name}}
+      </li>
+    </ul>
+`,
   styles: []
 })
 
 export class ListComponent implements OnInit{
-	items: any;
+	thoughts: any;
+	railroads: any;
 
   constructor(
   	public providerService: ProviderService
 	) {}
 
   ngOnInit(){
-		this.items = this.providerService.getThoughts();
+		this.thoughts = this.providerService.getThoughts();
+		this.railroads = this.providerService.getTrainsList();
 	}
 
 }
