@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-data-choice',
@@ -16,10 +16,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataChoiceComponent implements OnInit {
 
-	private dataChoice: string;
+	@Input()
+	dataChoice = 2;
 
 	constructor() {
-		this.dataChoice = '1';
 	}
 
 	ngOnInit() {

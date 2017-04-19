@@ -7,6 +7,8 @@ import {Train} from "./train";
   styles: []
 })
 export class AppComponent {
+	defaultDataChoice: number = 1;
+
   selectedTrain: Train;
 
 }
