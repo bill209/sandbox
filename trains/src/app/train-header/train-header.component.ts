@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
     <app-data-choice [dataChoice]="dataChoice"></app-data-choice>
     <h3>Common Carrier Freight Railroads in the United States</h3>
     <span>...a small sampling</span>
+    <p>dc: {{dataChoice}}</p>
   `,
   styles: []
 })

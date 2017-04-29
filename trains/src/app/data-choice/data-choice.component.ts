@@ -11,6 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 		
 				</md-radio-group>
 		</div>
+		<p>dc: {{dataChoice}}</p>
 	`,
 	styles: []
 })
