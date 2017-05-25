@@ -1,9 +1,16 @@
-import { AppComponent } from './script.ts';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component.ts'
 
 @NgModule({
-    imports: [ BrowserModule ],
-    declarations: [ AppComponent ],
-    bootstrap: [ AppComponent ]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-
 export class AppModule { }
