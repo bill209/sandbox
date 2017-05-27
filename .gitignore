@@ -5,6 +5,7 @@ jasmine-standalone-2.5.2
 /bin
 /dist
 /tmp
+/zuts
 
 # karma
 karma/node_modules
