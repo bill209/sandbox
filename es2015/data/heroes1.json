@@ -1,0 +1,26 @@
+[
+  { "id" : "1",
+    "pub" : "dc comics",
+    "hero" : "spider-man"
+  },
+  { "id" : "2",
+    "pub" : "marvel",
+    "hero" : "batman"
+  },
+  { "id" : "3",
+    "pub" : "image comics",
+    "hero" : "spawn"
+  },
+  { "id" : "4",
+    "pub" : "dc comics",
+    "hero" : "the hulk"
+  },
+  { "id" : "5",
+    "pub" : "marvel",
+    "hero" : "superman"
+  },
+  { "id" : "6",
+    "pub" : "dc comics",
+    "hero" : "green lantern"
+  }
+]

@@ -1,3 +1,5 @@
+"use strict";
+
 let foo = (x, ms) => {
   setTimeout(function() {
     console.log('you yielded', x);

@@ -1,3 +1,5 @@
+"use strict";
+
 let foo = (x, ms) => {
   setTimeout(function() {
     console.log('Hello World', x);
