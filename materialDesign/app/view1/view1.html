@@ -1,0 +1,54 @@
+<p>This is the partial for view 1.</p>
+<p>radio: {{v1c.radio}}</p>
+<form name="testForm">
+	<md-card>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">MD Headline</span>
+				<span class="md-subhead">MD SubHead</span>
+			</md-card-title-text>
+		</md-card-title>
+
+		<md-card-content>
+			<div layout="row" layout-align="space-between">
+
+				<md-input-container flex="23" class="paddingTop">
+					<md-radio-group layout="row" ng-model="v1c.radio" flex="45">
+						<md-radio-button value="1" class="md-primary">Yes</md-radio-button>
+						<md-radio-button value="2">No</md-radio-button>
+					</md-radio-group>
+				</md-input-container>
+
+				<md-input-container flex="17" class="paddingTop">
+					<md-checkbox ng-model="v1c.cb" aria-label="Checkbox 1">check it</md-checkbox>
+				</md-input-container>
+
+				<md-input-container flex="20">
+					<label>Name</label>
+					<input name="testInput"
+								 ng-model="v1c.name"
+								 required>
+					<div ng-messages="testForm.testInput.$error">
+						<div ng-message="required">Required</div>
+					</div>
+				</md-input-container>
+
+				<md-input-container flex="20">
+					<label>Color</label>
+					<md-select name="testSelect"
+										 ng-model="v1c.color"
+										 required>
+						<md-option ng-repeat="color in v1c.colors" ng-value="color">
+							{{color}}
+						</md-option>
+					</md-select>
+					<div ng-messages="testForm.testSelect.$error">
+						<div ng-message="required">Required</div>
+					</div>
+				</md-input-container>
+
+			</div>
+			<p class="footnote">note: a padding was added to radio button and checkbox elements to make them horizontally align with the input/select elements.</p>
+		</md-card-content>
+	</md-card>
+</form>
