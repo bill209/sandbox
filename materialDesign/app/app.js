@@ -1,14 +1,28 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+var app = angular.module('app', ['ngMaterial', 'ui.router']);
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+app.config(function($stateProvider, $urlRouterProvider) {
+
+	$urlRouterProvider.otherwise('/main');
+
+	$stateProvider
+		.state('main', {
+			url: '/main',
+			controller: 'MainCtrl as mc',
+			templateUrl: './main/main.html'
+		})
+
+		.state('about', {
+			url: '/about',
+			controller: 'AboutCtrl as ac',
+			templateUrl: './about/about.html'
+		})
+
+});
+
+app.controller("AppCtrl", appCtrl);
+
+function appCtrl($scope){
+	$scope.currentNavItem = 'main';
+}
