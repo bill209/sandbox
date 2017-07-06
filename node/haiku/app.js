@@ -25,7 +25,6 @@ let getHaiku = () => {
 app.get("/api", function(req, res) {
 	getHaiku().then(
 		(val) => {
-			console.log("success: " + val)
 			res.send(val);
 		},
 		(err) => { console.log("rejected: " + err) }
