@@ -1,43 +1,37 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var app = express();
-var router = express.Router();
-var http = require("http");
-
+// simple get example
+const express = require("express");
+const app = express();
+const http = require("http");
 const cheerio = require('cheerio');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+let getHaiku = () => {
+	return new Promise((resolve, reject) => {
+		// call the webpage that spits out a haiku
+		http.get('http://smalltime.com/Haiku', function(res) {
+			res.setEncoding('utf8');
+			res.on('data', function(d) {
+				const $ = cheerio.load(d);
+				let html = $('table').text().split('\n');
+				// remove blank lines
+				let haiku = html.filter(function(e){return e });
+				resolve(haiku);
+			})
+		}).on('error', function(e) {
+			reject('error: ', e);
+		});
+	});
+};
 
 app.get("/api", function(req, res) {
-	getHaiku();
-	res.send("Hello Worldz");
+	getHaiku().then(
+		(val) => {
+			console.log("success: " + val)
+			res.send(val);
+		},
+		(err) => { console.log("rejected: " + err) }
+	);
 });
-
-
-router.route('/')
-	.get(function(req, res){
-		res.send("Hello World");
-	})
-
-// app.use('/api', router);
 
 var server = app.listen(3000, function () {
 	console.log("Listening on port %s...", server.address().port);
 });
-
-function getHaiku() {
-	var haiku = '';
-	http.get('http://smalltime.com/Haiku?square=127.9', function(res) {
-		res.setEncoding('utf8');
-		var contentStart = false;
-		res.on('data', function(d) {
-			const $ = cheerio.load(d);
-			process.stdout.write($('table').text());
-		})
-	}).on('error', function(e) {
-		console.error(e);
-		console.log("This doesn't get logged out");
-	});
-	console.log("This gets logged");
-};
