@@ -1,9 +1,7 @@
 var React = require('react');
 var {Link, IndexLink} = require('react-router');
 
-var Nav = React.createClass({
-	render: function(){
-
+var Nav = (props) => {
 		return(
 				<div>
 					<h3>React Wx</h3>
@@ -12,7 +10,6 @@ var Nav = React.createClass({
 					<Link to="/examples" activeClassName="active" activeStyle={{color: 'red'}}>Examples</Link>
 				</div>
 		);
-	},
-});
+};
 
 module.exports = Nav;
