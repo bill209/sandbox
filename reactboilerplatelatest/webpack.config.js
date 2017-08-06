@@ -2,20 +2,20 @@ var path = require('path');
 
 module.exports = options => {
 	return {
-		entry: './index.js',
+		entry: './app.jsx',
 		output: {
 			filename: './public/bundle.js',
 		},
 		resolve: {
 			alias: {
-				MyAwesomeReactComponent: path.resolve(__dirname, 'src/MyAwesomeReactComponent'),
-				appStyles: path.resolve(__dirname, 'src/styles/app.css'),
+				MyAwesomeReactComponent: './src/MyAwesomeReactComponent',
+				appStyles: './src/styles/app.css',
 			}
 		},
 		module: {
 			rules: [
 				{
-					test: /.js?$/,
+					test: /.jsx?$/,
 					exclude: /node_modules/,
 					use: [
 						{

@@ -14,11 +14,14 @@ const styles = {
 	},
 }
 
+require("appStyles");
+
 class App extends Component {
 	render() {
 		return (
 			<div style={styles.app}>
 				Welcome to React!
+				<p>css test 3</p>
 				<MuiThemeProvider>
 					<MyAwesomeReactComponent />
 				</MuiThemeProvider>
