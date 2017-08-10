@@ -1,0 +1,42 @@
+body {
+	color: blue;
+}
+
+h3 {
+	color: red;
+	font-family: Roboto, serif;
+}
+
+#main {
+	position: relative;
+	height: 100%;
+}
+
+#main #leftCol {
+	float: left;
+	height: 100%;
+	padding: 10px;
+	width: 200px;
+	background-color: #eee;
+	color: #333;
+}
+
+#main #mainBody {
+	float: left;
+	padding: 10px;
+}
+
+#sidedrawer {
+	height: 100%;
+	background-color: #eee;
+	width: 200px;
+	color: #fff;
+}
+
+.sidedrawerList {
+	color: #fff;
+}
+
+#codeSample {
+	width: 400px;
+}
