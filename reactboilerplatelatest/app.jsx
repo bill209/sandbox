@@ -1,33 +1,30 @@
+// index.js
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { HashRouter, Switch, Route, Link } from 'react-router-dom'
-
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
-var Main = require('Main');
-// var Nav = require('Nav');
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MyAwesomeReactComponent from 'MyAwesomeReactComponent';
+
+const styles = {
+	app: {
+		paddingTop: 40,
+		textAlign: 'center',
+	},
+}
 
 require("appStyles");
-
-/*
-ReactDOM.render(
-	<HashRouter>
-		<div>
-			<Main />
-		</div>
-	</HashRouter>,
-	document.getElementById('root')
-);
-*/
 
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<div style={styles.app}>
 				Welcome to React!
 				<p>css test 3</p>
-				<Main />
+				<MuiThemeProvider>
+					<MyAwesomeReactComponent />
+				</MuiThemeProvider>
 			</div>
 		)
 	}
