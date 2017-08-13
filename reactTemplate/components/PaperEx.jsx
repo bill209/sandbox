@@ -11,13 +11,13 @@ const styleSheet = createStyleSheet(theme => ({
 	}),
 }));
 
-export default class PaperSheet extends React.Component {
+class PaperSheet extends React.Component {
 	constructor(props) {
 		super(props);
-		let {classes} = this.props;
 	}
 
 	render() {
+		const {classes} = this.props;
 		return (
 			<div>
 				<Paper className={classes.root} elevation={4}>
@@ -37,4 +37,4 @@ PaperSheet.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-// export default withStyles(styleSheet)(PaperSheet);
+export default withStyles(styleSheet)(PaperSheet);

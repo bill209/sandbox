@@ -8,14 +8,16 @@ var	path = require('path');
 var componentPath = path.join(__dirname, 'components/');
 const PORT = process.env.PORT || 3000;
 
-console.log("__dirname",__dirname);
+// redirect any non-home URLs back to '/'
+app.get('/paper',function(req,res){
+	res.redirect('/')
+})
 
 router.route('/sample')
 // get sample code
 	.get(function (req, res) {
 		return new Promise((resolve, reject) => {
 			let filePath = componentPath + 'PaperEx.jsx';
-			console.log('ROUTER ROUTE')
 
 			fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
 				if (!err) {

@@ -8,8 +8,10 @@ h3 {
 }
 
 #main {
+	/*float: left;*/
 	position: relative;
-	height: 100%;
+	width: 100%;
+	/*border:solid 5px rebeccapurple;*/
 }
 
 #main #leftCol {
