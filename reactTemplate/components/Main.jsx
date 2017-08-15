@@ -1,46 +1,45 @@
 import React from 'react'
-import {Link, Switch, Route} from 'react-router-dom'
+import {Link, Switch, Route, withRouter} from 'react-router-dom'
 import Home from './Home.jsx'
 import SideBar from './SideBar.jsx'
-import PaperEx from './PaperEx.jsx'
+import PaperEx from './examples/PaperEx.jsx'
+import AvatarsEx from './examples/AvatarsEx.jsx'
 import CodeSample from './CodeSample.jsx'
 
-export default class Main extends React.Component {
+class Main extends React.Component {
 
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			example: undefined,
-			refreshSideBar: 3
+			showSampleLink: true,
 		}
 	}
 
-	setExample = (ex) => {
-		this.setState({
-			example: ex
-		})
-	};
-
-	doRefreshSideBar = (refresh) => {
-		this.setState({refreshSideBar: refresh})
-	};
-
+	// render codesample link when showing an example
 	renderCodeSample(){
-		return <CodeSample example="paper" refreshSideBar={this.doRefreshSideBar}/>
+		const example = this.props.history.location.pathname.substring(1);
+
+		if(example !==''){
+			return <CodeSample example={example}/>
+		} else {
+			return null;
+		}
 	}
 
 	render() {
-		console.log("this.props.children",this.props.children);
-		
 		return (
 			<main id="main">
-				<SideBar refresh={this.state.refreshSideBar}/>
+				<SideBar />
 
 				<div id="mainBody">
 					<Switch>
-						<Route exact path='/' component={Home}/>
-						<Route path='/paper' setExample={this.setExample} component={PaperEx}/>
+						<Route exact path='/'
+									 component={Home}/>
+						{/*<Route path='/paper' render={() => (<PaperEx setExample={this.setExample}/>)} />*/}
+						<Route path='/paper' component={PaperEx}/>
+						<Route path='/avatars' component={AvatarsEx}/>
 					</Switch>
 					{this.renderCodeSample()}
 				</div>
@@ -48,3 +47,5 @@ export default class Main extends React.Component {
 		)
 	}
 }
+
+export default withRouter(Main);

@@ -7,8 +7,13 @@ h3 {
 	font-family: Roboto, serif;
 }
 
+.hide {
+	display: none;
+}
+
 #main {
 	/*float: left;*/
+	margin-top: 20px;
 	position: relative;
 	width: 100%;
 	/*border:solid 5px rebeccapurple;*/
@@ -41,4 +46,15 @@ h3 {
 
 #codeSample {
 	width: 400px;
+}
+
+#codeSample h3 {
+	cursor: pointer;
+	color: rebeccapurple;
+	font-family: Roboto, sans-serif;
+	font-weight: normal;
+}
+
+#codeSample pre {
+	color: #888;
 }
