@@ -7,26 +7,37 @@ import FolderIcon from 'material-ui-icons/Folder';
 import PageviewIcon from 'material-ui-icons/Pageview';
 import AssignmentIcon from 'material-ui-icons/Assignment';
 
-function IconAvatars(props) {
-	const classes = props.classes;
+class Avatars extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 
-	return (
-		<div className={classes.row}>
-			<Avatar className={classes.avatar}>
-				<FolderIcon />
-			</Avatar>
-			<Avatar className={classes.pinkAvatar}>
-				<PageviewIcon />
-			</Avatar>
-			<Avatar className={classes.greenAvatar}>
-				<AssignmentIcon />
-			</Avatar>
-		</div>
-	);
+	componentDidMount() {
+		this.props.setexample('avatars');
+	}
+
+	render() {
+		const {classes} = this.props;
+
+		return (
+			<div className={classes.row}>
+				<Avatar className={classes.avatar}>
+					<FolderIcon />
+				</Avatar>
+				<Avatar className={classes.pinkAvatar}>
+					<PageviewIcon />
+				</Avatar>
+				<Avatar className={classes.greenAvatar}>
+					<AssignmentIcon />
+				</Avatar>
+			</div>
+		);
+	}
+
 }
 
-IconAvatars.propTypes = {
+Avatars.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(SS)(IconAvatars);
+export default withStyles(SS)(Avatars);

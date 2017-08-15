@@ -1,10 +1,10 @@
 import React from 'react'
-import {Link, Switch, Route, withRouter} from 'react-router-dom'
-import Home from './Home.jsx'
+import ExamplesRouter from './examples/ExamplesRouter.jsx'
 import SideBar from './SideBar.jsx'
-import PaperEx from './examples/PaperEx.jsx'
-import AvatarsEx from './examples/AvatarsEx.jsx'
 import CodeSample from './CodeSample.jsx'
+import {withStyles} from 'material-ui/styles';
+
+import SS from './MainCss.jsx'
 
 class Main extends React.Component {
 
@@ -14,33 +14,33 @@ class Main extends React.Component {
 		this.state = {
 			example: undefined,
 			showSampleLink: true,
+			testit: 'xyz'
 		}
 	}
 
 	// render codesample link when showing an example
-	renderCodeSample(){
-		const example = this.props.history.location.pathname.substring(1);
+	renderCodeSample() {
+		// const example = this.props.history.location.pathname.substring(1);
 
-		if(example !==''){
-			return <CodeSample example={example}/>
+		if (typeof this.state.example !== 'undefined') {
+			return <CodeSample example={this.state.example}/>
 		} else {
 			return null;
 		}
 	}
 
+	// this is called by each MD component to set example for
+	// renderCodeSample component
+	setExample = (ex) => {
+		this.setState({example: ex})
+	};
+
 	render() {
 		return (
 			<main id="main">
 				<SideBar />
-
 				<div id="mainBody">
-					<Switch>
-						<Route exact path='/'
-									 component={Home}/>
-						{/*<Route path='/paper' render={() => (<PaperEx setExample={this.setExample}/>)} />*/}
-						<Route path='/paper' component={PaperEx}/>
-						<Route path='/avatars' component={AvatarsEx}/>
-					</Switch>
+					<ExamplesRouter setexample={this.setExample}/>
 					{this.renderCodeSample()}
 				</div>
 			</main>
@@ -48,4 +48,4 @@ class Main extends React.Component {
 	}
 }
 
-export default withRouter(Main);
+export default withStyles(SS)(Main);

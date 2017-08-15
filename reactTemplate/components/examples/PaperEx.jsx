@@ -4,7 +4,7 @@ import {withStyles, createStyleSheet} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 
-const styleSheet = createStyleSheet(theme => ({
+const styleSheet = createStyleSheet((theme) => ({
 	root: theme.mixins.gutters({
 		paddingTop: 16,
 		paddingBottom: 16,
@@ -12,8 +12,13 @@ const styleSheet = createStyleSheet(theme => ({
 }));
 
 class PaperSheet extends React.Component {
+
 	constructor(props) {
 		super(props);
+	}
+
+	componentDidMount() {
+		this.props.setexample('paper');
 	}
 
 	render() {
