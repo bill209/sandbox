@@ -14,7 +14,7 @@ class CodeSample extends React.Component {
 			imports: undefined,
 			stylesheet: undefined,
 			err: undefined,
-			showSample: false,
+			showSample: this.props.showSample,
 			showImports: false,
 			sample: this.props.sample
 		};
@@ -22,25 +22,29 @@ class CodeSample extends React.Component {
 
 	toggleSample = function () {
 		var that = this;
-		if (!this.state.showSample) {
+		if (this.state.showSample) {
+			that.setState({
+				showSample: false
+			});
+		} else {
+			getSampleCode.getSampleCode(this.props.example)
+				.then(function (res) {
+					const codeChunks = that.formatCodeData(res.data);
 
-			var res = getSampleCode.getSampleCode(this.props.example).then(function (res) {
-				const codeChunks = that.formatCodeData(res.data);
-
-				that.setState({
-					code: codeChunks.body,
-					imports: codeChunks.imports,
-					stylesheet: codeChunks.stylesheet,
-					isLoading: false,
-					showSample: true
+					that.setState({
+						code: codeChunks.body,
+						imports: codeChunks.imports,
+						stylesheet: codeChunks.stylesheet,
+						isLoading: false,
+						showSample: true
+					})
+				}, function (e) {
+					that.setState({
+						err: res.message,
+						isLoading: false,
+						showSample: false
+					})
 				})
-			}, function (e) {
-				that.setState({
-					err: res.message,
-					isLoading: false,
-					showSample: false
-				})
-			})
 		}
 	};
 

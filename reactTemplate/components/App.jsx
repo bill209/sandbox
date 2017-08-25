@@ -1,13 +1,15 @@
 import React from 'react'
+import {BrowserRouter} from 'react-router-dom';
 import Main from './Main.jsx'
 import Nav from './Nav.jsx'
-import Basic from './Basic.jsx'
 
 const App = () => (
-	<div>
-		<Nav />
-		<Main />
-	</div>
-)
+	<BrowserRouter>
+		<div>
+			<Nav />
+			<Main />
+		</div>
+	</BrowserRouter>
+);
 
 export default App

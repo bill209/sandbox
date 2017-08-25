@@ -12,11 +12,11 @@ class ExamplesRouter extends React.Component {
 
 	render() {
 		return (
-			<Switch>
+			<div>
 				<Route exact path='/' component={Home}/>
 				<Route path='/paper' render={() => (<PaperEx setexample={this.props.setexample}/>)} />
 				<Route path='/avatars' render={() => (<AvatarsEx setexample={this.props.setexample}/>)} />
-			</Switch>
+			</div>
 		)
 	}
 }

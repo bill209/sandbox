@@ -10,7 +10,7 @@ let foo = (x, ms) => {
 function* main() {
   yield foo('a', 1000);
   yield foo('b', 25);
-  foo('c', 200);
+  foo('c', 1200);
   yield foo('d', 250);
 
 }

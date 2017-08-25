@@ -13,8 +13,7 @@ class Main extends React.Component {
 
 		this.state = {
 			example: undefined,
-			showSampleLink: true,
-			testit: 'xyz'
+			showSample: false,
 		}
 	}
 
@@ -23,7 +22,7 @@ class Main extends React.Component {
 		// const example = this.props.history.location.pathname.substring(1);
 
 		if (typeof this.state.example !== 'undefined') {
-			return <CodeSample example={this.state.example}/>
+			return <CodeSample example={this.state.example} showSample={this.state.showSample}/>
 		} else {
 			return null;
 		}
@@ -32,13 +31,18 @@ class Main extends React.Component {
 	// this is called by each MD component to set example for
 	// renderCodeSample component
 	setExample = (ex) => {
-		this.setState({example: ex})
+		this.setState({ example: ex })
+	};
+
+	hideExample = () => {
+		console.log("hideExample");
+		this.setState({ showSample: false })
 	};
 
 	render() {
 		return (
 			<main id="main">
-				<SideBar />
+				<SideBar hideExample={this.hideExample}/>
 				<div id="mainBody">
 					<ExamplesRouter setexample={this.setExample}/>
 					{this.renderCodeSample()}

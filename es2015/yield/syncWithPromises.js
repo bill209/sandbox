@@ -42,7 +42,7 @@ function* main() {
   console.log('results from promise: ', v);
 
   yield foo('d', 25);
-  console.log('f is resolved');
+  console.log('d is resolved');
 
   // using .catch
   let z = yield Promise.all([p1('e', 1000), p2('bad', 50)]).then((values) => {
